@@ -12,7 +12,7 @@ CREATE TABLE room
     client_id uuid REFERENCES client (id),
     price DECIMAL NOT NULL,
     capacity INTEGER NOT NULL,
-    type_class CHARACTER VARYING(100),
+    type_class CHARACTER VARYING(100) NOT NULL,
     check_in DATE,
     check_out DATE
 );
