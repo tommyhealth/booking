@@ -1,52 +1,28 @@
 package ru.fallindawn.booking.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.UUID;
 
+@Data
 @Entity
-@Table(name = "client", schema = "public")
+@Table(name = "client")
 public class Client {
-    private UUID id;
-    private String phone;
-    private String name;
-    private String secondName;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToMany(mappedBy = "client_id")
-    @Column(name = "id")
-    public UUID getId() {
-        return id;
-    }
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    @Column
+    private String phone;
 
-    @Column(name = "phone")
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    @Column(name = "name")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    @Column
+    private String name;
 
     @Column(name = "second_name")
-    public String getSecondName() {
-        return secondName;
-    }
+    private String secondName;
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
 }
+
+
