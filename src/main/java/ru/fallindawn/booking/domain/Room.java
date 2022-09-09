@@ -1,12 +1,20 @@
 package ru.fallindawn.booking.domain;
 
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name = "room", schema = "public")
+@Table(name = "room")
 public class Room {
 
     @Id
@@ -15,22 +23,22 @@ public class Room {
 
     @ManyToOne
     @JoinColumn(name = "id")
-    @Column(name = "client_id")
+    @Column
     private UUID clientId;
 
     @Column
     private Long capacity;
 
-    @Column(name = "type_class")
+    @Column
     private Enum<RoomType> typeClass;
 
     @Column
     private BigDecimal price;
 
-    @Column(name = "check_in")
+    @Column
     private LocalDate checkIn;
 
-    @Column(name = "check_out")
+    @Column
     private LocalDate checkOut;
 
 }
