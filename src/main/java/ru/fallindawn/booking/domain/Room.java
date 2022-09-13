@@ -1,7 +1,10 @@
 package ru.fallindawn.booking.domain;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,9 +27,8 @@ public class Room {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "id")
-    @Column
-    private UUID clientId;
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     @Column
     private Long capacity;

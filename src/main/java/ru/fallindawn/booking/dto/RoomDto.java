@@ -1,5 +1,6 @@
 package ru.fallindawn.booking.dto;
 
+import ru.fallindawn.booking.domain.Client;
 import ru.fallindawn.booking.domain.RoomType;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,7 +8,7 @@ import java.util.UUID;
 
 public class RoomDto {
     private UUID id;
-    private UUID clientId;
+    private Client client;
     private Long capacity;
     private Enum<RoomType> typeClass;
     private BigDecimal price;
@@ -22,12 +23,12 @@ public class RoomDto {
         this.id = id;
     }
 
-    public UUID getClientId() {
-        return clientId;
+    public Client getClient() {
+        return client;
     }
 
-    public void setClientId(UUID clientId) {
-        this.clientId = clientId;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Long getCapacity() {
