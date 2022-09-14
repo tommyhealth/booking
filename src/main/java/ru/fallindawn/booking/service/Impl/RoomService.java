@@ -9,6 +9,7 @@ import ru.fallindawn.booking.mapper.RoomMapper;
 import ru.fallindawn.booking.repository.RoomRepository;
 import ru.fallindawn.booking.service.IRoomService;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RoomService implements IRoomService {
@@ -19,7 +20,11 @@ public class RoomService implements IRoomService {
     @Autowired
     private RoomMapper roomMapper;
 
+    //TODO
     public List<RoomDto> getByData(SearchRequestDto searchRequestDto) {
-        return null;
+        return roomRepository.findAll().stream().filter(room -> searchRequestDto.getDateFrom().isBefore(room.getCheckIn())
+                        && searchRequestDto.getDateTo() == room.getCheckOut())
+                .map(room -> roomMapper.roomToDto(room))
+                .collect(Collectors.toList());
     }
 }

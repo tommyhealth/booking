@@ -18,6 +18,8 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "room")
 public class Room {
