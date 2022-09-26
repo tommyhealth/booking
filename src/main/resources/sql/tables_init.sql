@@ -13,6 +13,12 @@ CREATE TABLE room
     price DECIMAL NOT NULL,
     capacity INTEGER NOT NULL,
     type_class CHARACTER VARYING(100) NOT NULL,
+);
+
+CREATE TABLE registration
+(
+    id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+    room_id uuid REFERENCES room (id),
     check_in DATE,
-    check_out DATE
+    check_out DATE,
 );
