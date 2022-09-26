@@ -41,10 +41,5 @@ public class Room {
     @Column
     private BigDecimal price;
 
-    @Column
-    private LocalDate checkIn;
-
-    @Column
-    private LocalDate checkOut;
 
 }
