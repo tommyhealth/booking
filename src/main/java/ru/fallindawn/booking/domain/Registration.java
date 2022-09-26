@@ -19,9 +19,8 @@ public class Registration {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "room_id")
-    @ManyToMany
-    @JoinColumn(name = "room")
+    @ManyToOne
+    @JoinColumn(name = "room_id")
     private Room room;
 
     @Column
