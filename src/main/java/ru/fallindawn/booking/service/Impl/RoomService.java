@@ -4,7 +4,6 @@ package ru.fallindawn.booking.service.Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.fallindawn.booking.domain.Registration;
-import ru.fallindawn.booking.domain.Room;
 import ru.fallindawn.booking.dto.RoomDto;
 import ru.fallindawn.booking.dto.SearchRequestDto;
 import ru.fallindawn.booking.mapper.RoomMapper;
@@ -12,7 +11,6 @@ import ru.fallindawn.booking.repository.RegistrationRepository;
 import ru.fallindawn.booking.repository.RoomRepository;
 import ru.fallindawn.booking.service.IRoomService;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,14 +26,16 @@ public class RoomService implements IRoomService {
     private RoomMapper roomMapper;
 
     public List<RoomDto> getByData(SearchRequestDto searchRequestDto) {
-        List <UUID> reservedRoom = registrationRepository.findByRoomBetween(searchRequestDto.getDateFrom(), searchRequestDto.getDateTo()).stream()
-                .map(Registration::getRoom)
-                .map(Room::getId)
-                .distinct()
+
+        var dateFrom = searchRequestDto.getDateFrom();
+        var dateTo = searchRequestDto.getDateTo();
+
+        var reservedRooms = registrationRepository.findDistinctByRoomBetween(dateFrom, dateTo).stream()
+                .map(Registration::getRoomId)
                 .collect(Collectors.toList());
 
         return roomRepository.findAllByCapacity(searchRequestDto.getCapacity()).stream()
-                .filter(room -> !reservedRoom.contains(room.getId()))
+                .filter(room -> !reservedRooms.contains(room.getId()))
                 .map(room -> roomMapper.roomToDto(room))
                 .collect(Collectors.toList());
 
