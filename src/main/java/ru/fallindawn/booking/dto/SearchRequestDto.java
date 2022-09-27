@@ -10,7 +10,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SearchRequestDto {
-
     private LocalDate dateFrom;
     private LocalDate dateTo;
     private Long capacity;
