@@ -34,9 +34,9 @@ public class Registration {
     private LocalDate checkIn;
 
     @Column
-    private  LocalDate checkOut;
+    private LocalDate checkOut;
 
     public UUID getRoomId() {
-     return room.getId();
+        return room.getId();
     }
 }

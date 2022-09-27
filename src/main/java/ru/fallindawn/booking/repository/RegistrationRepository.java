@@ -12,6 +12,4 @@ import java.util.UUID;
 public interface RegistrationRepository extends JpaRepository<Registration, UUID> {
 
     List<Registration> findDistinctByRoomBetween(LocalDate dateFrom, LocalDate dateTo);
-
-
 }

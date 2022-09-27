@@ -1,13 +1,11 @@
-CREATE TABLE client
-(
+CREATE TABLE client (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     phone CHARACTER VARYING (20) NOT NULL,
     name CHARACTER VARYING(100) NOT NULL,
     second_name CHARACTER VARYING(100) NOT NULL
 );
 
-CREATE TABLE room
-(
+CREATE TABLE room (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     client_id uuid REFERENCES client (id),
     price DECIMAL NOT NULL,
@@ -15,8 +13,7 @@ CREATE TABLE room
     type_class CHARACTER VARYING(100) NOT NULL,
 );
 
-CREATE TABLE registration
-(
+CREATE TABLE registration (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     room_id uuid REFERENCES room (id),
     check_in DATE,
