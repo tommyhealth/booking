@@ -1,6 +1,5 @@
 package ru.fallindawn.booking.domain;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -21,25 +19,24 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "room")
-public class Room {
+@Table(name = "registration")
+public class Registration {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+    @JoinColumn(name = "room_id")
+    private Room room;
 
     @Column
-    private Long capacity;
+    private LocalDate checkIn;
 
     @Column
-    private Enum<RoomType> typeClass;
+    private LocalDate checkOut;
 
-    @Column
-    private BigDecimal price;
-
-
+    public UUID getRoomId() {
+        return room.getId();
+    }
 }

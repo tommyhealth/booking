@@ -19,8 +19,4 @@ public class RoomDto {
     private Long capacity;
     private Enum<RoomType> typeClass;
     private BigDecimal price;
-    private LocalDate checkIn;
-    private LocalDate checkOut;
-
-
 }
