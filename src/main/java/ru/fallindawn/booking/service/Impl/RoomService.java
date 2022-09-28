@@ -1,6 +1,7 @@
 package ru.fallindawn.booking.service.Impl;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.fallindawn.booking.domain.Registration;
@@ -14,6 +15,7 @@ import ru.fallindawn.booking.service.IRoomService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class RoomService implements IRoomService {
 
@@ -25,6 +27,13 @@ public class RoomService implements IRoomService {
 
     @Autowired
     private RoomMapper roomMapper;
+
+    public List<RoomDto> findAll() {
+        log.info("Enter: findAll()");
+        return roomRepository.findAll().stream()
+                .map(room -> roomMapper.roomToDto(room))
+                .collect(Collectors.toList());
+    }
 
     public List<RoomDto> getByData(SearchRequestDto searchRequestDto) {
         var dateFrom = searchRequestDto.getDateFrom();
