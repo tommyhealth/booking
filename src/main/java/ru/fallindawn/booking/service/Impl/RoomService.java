@@ -29,7 +29,7 @@ public class RoomService implements IRoomService {
     private RoomMapper roomMapper;
 
     public List<RoomDto> findAll() {
-        log.info("Get all rooms");
+        log.info("Enter: findAll()");
         return roomRepository.findAll().stream()
                 .map(room -> roomMapper.roomToDto(room))
                 .collect(Collectors.toList());
