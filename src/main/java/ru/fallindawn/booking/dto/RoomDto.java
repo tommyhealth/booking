@@ -6,17 +6,15 @@ import lombok.NoArgsConstructor;
 import ru.fallindawn.booking.domain.Client;
 import ru.fallindawn.booking.domain.RoomType;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoomDto {
-
     private UUID id;
     private Client client;
     private Long capacity;
-    private Enum<RoomType> typeClass;
+    private RoomType typeClass;
     private BigDecimal price;
 }
