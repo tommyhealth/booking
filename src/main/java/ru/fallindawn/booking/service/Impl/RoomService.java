@@ -38,9 +38,9 @@ public class RoomService implements IRoomService {
     public List<RoomDto> getByData(SearchRequestDto searchRequestDto) {
         var dateFrom = searchRequestDto.getDateFrom();
         var dateTo = searchRequestDto.getDateTo();
-        var reservedRooms = registrationRepository.findDistinctByRoomBetween(dateFrom, dateTo).stream()
+        var reservedRooms = registrationRepository.findDistinctBetween(dateFrom, dateTo).stream()
                 .map(Registration::getRoomId)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
 
         return roomRepository.findAllByCapacity(searchRequestDto.getCapacity()).stream()
                 .filter(room -> !reservedRooms.contains(room.getId()))
