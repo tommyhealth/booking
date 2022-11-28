@@ -4,17 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.fallindawn.booking.domain.Client;
-import ru.fallindawn.booking.domain.RoomType;
-import java.math.BigDecimal;
+
+import java.time.Instant;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RoomDto {
-    private UUID id;
+public class RegistrationDto {
+    private UUID clientId;
     private Client client;
-    private Long capacity;
-    private RoomType roomType;
-    private BigDecimal price;
+    private UUID roomId;
+    private Instant dateFrom;
+    private Instant dateTo;
 }

@@ -7,7 +7,7 @@ import ru.fallindawn.booking.dto.SearchRequestDto;
 import java.util.List;
 
 @Service
-public interface IRoomService {
+public interface RoomService {
 
       List<RoomDto> getByData(SearchRequestDto searchRequestDto);
 

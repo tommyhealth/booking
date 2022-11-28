@@ -30,7 +30,7 @@ public class Room {
 
     @ManyToOne
     @JoinColumn(name = "client_id")
-    private Client client;
+    private Client client; //TODO: удалить клиента (из БД тоже)
 
     @Column
     private Long capacity;

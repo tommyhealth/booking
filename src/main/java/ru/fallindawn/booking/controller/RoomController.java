@@ -1,25 +1,21 @@
 package ru.fallindawn.booking.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.fallindawn.booking.dto.RoomDto;
 import ru.fallindawn.booking.dto.SearchRequestDto;
-import ru.fallindawn.booking.service.IRoomService;
+
 import java.util.List;
 
-@RestController
-public class RoomController implements IRoomController {
+@RequestMapping("/room")
+public interface RoomController {
 
-    @Autowired
-    private IRoomService roomService;
+    @GetMapping
+    List<RoomDto> findAll();
 
-    @Override
-    public List<RoomDto> findAll() {
-        return roomService.findAll();
-    }
+    @PostMapping
+    List<RoomDto> getByData(@RequestBody SearchRequestDto searchRequestDto);
 
-    @Override
-    public  List<RoomDto> getByData(SearchRequestDto searchRequestDto) {
-        return roomService.getByData(searchRequestDto);
-    }
 }

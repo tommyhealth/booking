@@ -30,6 +30,13 @@ public class Registration {
     @JoinColumn(name = "room_id")
     private Room room;
 
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    //TODO: Добавить клиента (в том числе и в БД. Связь ManyToOne)
+
+    @Column
     private Instant checkIn;
 
     @Column

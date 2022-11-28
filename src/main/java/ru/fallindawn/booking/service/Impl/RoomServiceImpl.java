@@ -10,14 +10,14 @@ import ru.fallindawn.booking.dto.SearchRequestDto;
 import ru.fallindawn.booking.mapper.RoomMapper;
 import ru.fallindawn.booking.repository.RegistrationRepository;
 import ru.fallindawn.booking.repository.RoomRepository;
-import ru.fallindawn.booking.service.IRoomService;
+import ru.fallindawn.booking.service.RoomService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class RoomService implements IRoomService {
+public class RoomServiceImpl implements RoomService {
 
     @Autowired
     private RoomRepository roomRepository;
