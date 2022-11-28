@@ -1,4 +1,4 @@
-insert into room(price, capacity, type_class)
+insert into room(id, price, capacity, type_class)
 values (1800.00, 2, 'GRAND'),
        (2100.25, 2, 'STANDARD'),
        (1800.00, 1, 'STANDARD'),
