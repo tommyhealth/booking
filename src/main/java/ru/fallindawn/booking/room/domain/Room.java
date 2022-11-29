@@ -29,7 +29,7 @@ public class Room {
     @Column
     private Long capacity;
 
-    @Column
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private RoomType typeClass;
 

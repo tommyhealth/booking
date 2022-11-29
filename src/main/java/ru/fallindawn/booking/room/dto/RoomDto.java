@@ -14,6 +14,6 @@ import java.util.UUID;
 public class RoomDto {
     private UUID id;
     private Long capacity;
-    private RoomType roomType;
+    private RoomType typeClass;
     private BigDecimal price;
 }
