@@ -28,14 +28,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public RegistrationDto makeReserve(RegistrationDto registrationDto) {
-        //TODO предварительно положи в таблицу с клиентами  клиентов для последующих проверок
-        //TODO: Из репозитория клиетов достать челика по registration.clientId
-        // TODO: Из репозитория комнат достать комнату по registration.roomId
-        //TODO: Из репозитория комнат достать комнату по registration.roomId
-        //TODO: Заводим новый объект Registration (не ДТО. ДТО и так приходит в метод), заполняеv
-        // данными (клиент и комната (их объекты которые мы ранее получили) и даты бронирования )
-        //TODO: сохраняем полчившееся (registrationRepository.save(объект_который_заполнили_на_предыдущем шаге))
-        //TODO: Проверить что забронрованная комната больше не появляется при поиске всех комнат
+
         Client client = clientRepository.getReferenceById(registrationDto.getClientId());
         Room room = roomRepository.getReferenceById(registrationDto.getRoomId());
 
