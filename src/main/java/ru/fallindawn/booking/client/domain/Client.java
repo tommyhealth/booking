@@ -1,10 +1,8 @@
 package ru.fallindawn.booking.client.domain;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -12,7 +10,7 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "phone"))
+@Table(name = "client", uniqueConstraints = @UniqueConstraint(columnNames = "phone"))
 public class Client {
 
     @Id
@@ -27,7 +25,6 @@ public class Client {
 
     @Column
     private String secondName;
-
 }
 
 

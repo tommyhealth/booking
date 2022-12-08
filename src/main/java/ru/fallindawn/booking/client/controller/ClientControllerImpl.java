@@ -12,7 +12,7 @@ public class ClientControllerImpl implements ClientController {
     private ClientService clientService;
 
     @Override
-    public ClientDto saveClient(ClientDto clientDto) {
-        return clientService.saveClient(clientDto);
+    public ClientDto registerClient(ClientDto clientDto) {
+        return clientService.registerClient(clientDto);
     }
 }

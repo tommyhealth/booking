@@ -9,6 +9,6 @@ import ru.fallindawn.booking.client.dto.ClientDto;
 public interface ClientController {
 
     @PostMapping
-    ClientDto saveClient(@RequestBody ClientDto clientDto);
+    ClientDto registerClient(@RequestBody ClientDto clientDto);
 
 }

@@ -20,7 +20,7 @@ public class RoomControllerImpl implements RoomController {
 
     @Override
     public List<RoomDto> getByData(SearchRequestDto searchRequestDto) {
-        return roomService.getByData(searchRequestDto);
+        return roomService.findByData(searchRequestDto);
     }
 
     @Override

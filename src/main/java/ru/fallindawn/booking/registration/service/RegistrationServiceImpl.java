@@ -28,7 +28,6 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public RegistrationDto makeReserve(RegistrationDto registrationDto) {
-
         Client client = clientRepository.getReferenceById(registrationDto.getClientId());
         Room room = roomRepository.getReferenceById(registrationDto.getRoomId());
 

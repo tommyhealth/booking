@@ -20,7 +20,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     @Transactional
-    public ClientDto saveClient(ClientDto clientDto) {
+    public ClientDto registerClient(ClientDto clientDto) {
         Client client = clientRepository.save(clientMapper.toEntity(clientDto));
         return clientMapper.toDto(client);
 

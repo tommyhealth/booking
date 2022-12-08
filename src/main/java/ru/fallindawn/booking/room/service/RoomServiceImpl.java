@@ -1,6 +1,5 @@
 package ru.fallindawn.booking.room.service;
 
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +9,6 @@ import ru.fallindawn.booking.room.dto.SearchRequestDto;
 import ru.fallindawn.booking.registration.repository.RegistrationRepository;
 import ru.fallindawn.booking.room.mapper.RoomMapper;
 import ru.fallindawn.booking.room.repository.RoomRepository;
-
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,7 +44,7 @@ public class RoomServiceImpl implements RoomService {
         return roomMapper.toDto(createdRoom);
     }
 
-    public List<RoomDto> getByData(SearchRequestDto searchRequestDto) {
+    public List<RoomDto> findByData(SearchRequestDto searchRequestDto) {
         var dateFrom = searchRequestDto.getDateFrom();
         var dateTo = searchRequestDto.getDateTo();
         var reservedRooms = registrationRepository.findDistinctBetween(dateFrom, dateTo).stream()
@@ -57,6 +55,5 @@ public class RoomServiceImpl implements RoomService {
                 .filter(room -> !reservedRooms.contains(room.getId()))
                 .map(room -> roomMapper.toDto(room))
                 .collect(Collectors.toList());
-
     }
 }
