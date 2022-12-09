@@ -23,6 +23,5 @@ public class ClientServiceImpl implements ClientService {
     public ClientDto registerClient(ClientDto clientDto) {
         Client client = clientRepository.save(clientMapper.toEntity(clientDto));
         return clientMapper.toDto(client);
-
     }
 }
