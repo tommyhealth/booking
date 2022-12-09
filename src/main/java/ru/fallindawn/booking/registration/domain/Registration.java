@@ -36,7 +36,7 @@ public class Registration {
     private Room room;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
     @Column

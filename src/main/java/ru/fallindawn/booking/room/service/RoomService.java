@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RoomService {
 
-      List<RoomDto> findByData(SearchRequestDto searchRequestDto);
+      List<RoomDto> findByDate(SearchRequestDto searchRequestDto);
 
       List<RoomDto> findAll();
 

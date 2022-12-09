@@ -44,7 +44,7 @@ public class RoomServiceImpl implements RoomService {
         return roomMapper.toDto(createdRoom);
     }
 
-    public List<RoomDto> findByData(SearchRequestDto searchRequestDto) {
+    public List<RoomDto> findByDate(SearchRequestDto searchRequestDto) {
         var dateFrom = searchRequestDto.getDateFrom();
         var dateTo = searchRequestDto.getDateTo();
         var reservedRooms = registrationRepository.findDistinctBetween(dateFrom, dateTo).stream()
