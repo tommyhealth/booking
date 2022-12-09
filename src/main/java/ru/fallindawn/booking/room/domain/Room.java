@@ -26,13 +26,13 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column
+    @Column(nullable = false)
     private Long capacity;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private RoomType typeClass;
 
-    @Column
+    @Column(nullable = false)
     private BigDecimal price;
 }
