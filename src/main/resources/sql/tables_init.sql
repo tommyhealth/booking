@@ -14,8 +14,8 @@ CREATE TABLE room (
 
 CREATE TABLE registration (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-    room_id   uuid REFERENCES room(id),
-    client_id uuid REFERENCES client(id),
-    check_in  TIMESTAMP,
+    room_id   uuid REFERENCES room(id)   NOT NULL,
+    client_id uuid REFERENCES client(id) NOT NULL,
+    check_in  TIMESTAMP NOT NULL,
     check_out TIMESTAMP
 );

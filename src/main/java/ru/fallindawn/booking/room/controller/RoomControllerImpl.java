@@ -2,8 +2,9 @@ package ru.fallindawn.booking.room.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+import ru.fallindawn.booking.room.dto.CreateRoomCommand;
 import ru.fallindawn.booking.room.dto.RoomDto;
-import ru.fallindawn.booking.room.dto.SearchRequestDto;
+import ru.fallindawn.booking.room.dto.SearchRoomQuery;
 import ru.fallindawn.booking.room.service.RoomService;
 import java.util.List;
 
@@ -19,12 +20,12 @@ public class RoomControllerImpl implements RoomController {
     }
 
     @Override
-    public List<RoomDto> getByData(SearchRequestDto searchRequestDto) {
-        return roomService.findByDate(searchRequestDto);
+    public List<RoomDto> getByData(SearchRoomQuery searchRoomQuery) {
+        return roomService.findByDate(searchRoomQuery);
     }
 
     @Override
-    public RoomDto createRoom(RoomDto roomDto) {
-        return roomService.createRoom(roomDto);
+    public RoomDto createRoom(CreateRoomCommand createRoomCommand) {
+        return roomService.createRoom(createRoomCommand);
     }
 }

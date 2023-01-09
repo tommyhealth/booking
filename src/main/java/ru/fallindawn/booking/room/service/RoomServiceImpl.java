@@ -4,8 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.fallindawn.booking.registration.domain.Registration;
+import ru.fallindawn.booking.room.dto.CreateRoomCommand;
 import ru.fallindawn.booking.room.dto.RoomDto;
-import ru.fallindawn.booking.room.dto.SearchRequestDto;
+import ru.fallindawn.booking.room.dto.SearchRoomQuery;
 import ru.fallindawn.booking.registration.repository.RegistrationRepository;
 import ru.fallindawn.booking.room.mapper.RoomMapper;
 import ru.fallindawn.booking.room.repository.RoomRepository;
@@ -31,29 +32,33 @@ public class RoomServiceImpl implements RoomService {
         var allRooms = roomRepository.findAll().stream()
                 .map(room -> roomMapper.toDto(room))
                 .collect(Collectors.toList());
-        log.info("Exit: findAll(). Finded Rooms: " + allRooms);
+        log.info("Exit: findAll(). Found rooms: " + allRooms);
         return allRooms;
     }
 
     @Override
     @Transactional
-    public RoomDto createRoom(RoomDto roomDto) {
-        log.info("Enter: createRoom(). Room DTO: {}", roomDto);
+    public RoomDto createRoom(CreateRoomCommand roomDto) {
+        log.info("Enter: createRoom(). Room from command: {}", roomDto);
         var createdRoom = roomRepository.save(roomMapper.toEntity(roomDto));
         log.info("Exit: createRoom(). Result room: {}", createdRoom);
         return roomMapper.toDto(createdRoom);
     }
 
-    public List<RoomDto> findByDate(SearchRequestDto searchRequestDto) {
-        var dateFrom = searchRequestDto.getDateFrom();
-        var dateTo = searchRequestDto.getDateTo();
+    public List<RoomDto> findByDate(SearchRoomQuery searchRoomQuery) {
+        log.info("Enter: findByDate(). From query: {}", searchRoomQuery);
+        var dateFrom = searchRoomQuery.getDateFrom();
+        var dateTo = searchRoomQuery.getDateTo();
         var reservedRooms = registrationRepository.findDistinctBetween(dateFrom, dateTo).stream()
                 .map(Registration::getRoomId)
                 .collect(Collectors.toSet());
 
-        return roomRepository.findAllByCapacity(searchRequestDto.getCapacity()).stream()
+        var foundRooms = roomRepository.findByCapacity(searchRoomQuery.getCapacity()).stream()
                 .filter(room -> !reservedRooms.contains(room.getId()))
-                .map(room -> roomMapper.toDto(room))
+                .map(roomMapper::toDto)
                 .collect(Collectors.toList());
+
+        log.info("Exit: findByDate(). Found rooms: {}", foundRooms);
+        return foundRooms;
     }
 }

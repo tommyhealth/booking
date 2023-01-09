@@ -9,7 +9,7 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SearchRequestDto {
+public class SearchRoomQuery {
     private Instant dateFrom;
     private Instant dateTo;
     private Long capacity;
