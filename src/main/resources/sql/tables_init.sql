@@ -1,3 +1,5 @@
+CREATE EXTENSION pgcrypto;
+
 CREATE TABLE client (
     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     phone       VARCHAR(20)  UNIQUE,
