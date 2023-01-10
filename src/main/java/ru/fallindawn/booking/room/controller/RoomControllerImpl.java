@@ -20,8 +20,8 @@ public class RoomControllerImpl implements RoomController {
     }
 
     @Override
-    public List<RoomDto> getByData(SearchRoomQuery searchRoomQuery) {
-        return roomService.findByDate(searchRoomQuery);
+    public List<RoomDto> getFreeRoomsByDate(SearchRoomQuery searchRoomQuery) {
+        return roomService.findFreeRoomsByDate(searchRoomQuery);
     }
 
     @Override

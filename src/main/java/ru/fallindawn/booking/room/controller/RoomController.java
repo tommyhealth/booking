@@ -8,6 +8,7 @@ import ru.fallindawn.booking.room.dto.CreateRoomCommand;
 import ru.fallindawn.booking.room.dto.RoomDto;
 import ru.fallindawn.booking.room.dto.SearchRoomQuery;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RequestMapping("/room")
@@ -17,7 +18,7 @@ public interface RoomController {
     List<RoomDto> findAll();
 
     @PostMapping
-    List<RoomDto> getByData(@RequestBody SearchRoomQuery searchRoomQuery);
+    List<RoomDto> getFreeRoomsByDate(@RequestBody @Valid SearchRoomQuery searchRoomQuery);
 
     @PostMapping("/create")
     RoomDto createRoom(@RequestBody CreateRoomCommand createRoomCommand);

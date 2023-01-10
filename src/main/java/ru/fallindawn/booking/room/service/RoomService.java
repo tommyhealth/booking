@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface RoomService {
 
-      List<RoomDto> findByDate(SearchRoomQuery searchRoomQuery);
+      List<RoomDto> findFreeRoomsByDate(SearchRoomQuery searchRoomQuery);
 
       List<RoomDto> findAll();
 

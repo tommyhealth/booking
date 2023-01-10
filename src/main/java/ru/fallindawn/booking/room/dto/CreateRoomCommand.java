@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import ru.fallindawn.booking.room.domain.RoomType;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -16,7 +15,6 @@ public class CreateRoomCommand {
     private Long capacity;
 
     @NotNull
-    @NotBlank
     private RoomType typeClass;
 
     @NotNull

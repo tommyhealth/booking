@@ -50,7 +50,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<RoomDto> findByDate(SearchRoomQuery searchRoomQuery) {
+    public List<RoomDto> findFreeRoomsByDate(SearchRoomQuery searchRoomQuery) {
         log.info("Enter: findByDate(). From query: {}", searchRoomQuery);
         var reservedRooms = findReservedRooms(searchRoomQuery);
         var foundRooms = getNonReservedRooms(searchRoomQuery, reservedRooms);
