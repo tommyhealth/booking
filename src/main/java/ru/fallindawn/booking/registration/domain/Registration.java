@@ -41,7 +41,7 @@ public class Registration {
     @Column(nullable = false)
     private Instant checkIn;
 
-    @Column
+    @Column(nullable = false)
     private Instant checkOut;
 
     public UUID getRoomId() {

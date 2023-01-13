@@ -7,5 +7,4 @@ public enum RoomType {
     DELUXE,
     FAMILY,
     TRIPLE
-
 }

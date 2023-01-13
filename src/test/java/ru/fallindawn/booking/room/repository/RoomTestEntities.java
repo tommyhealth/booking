@@ -6,7 +6,7 @@ import ru.fallindawn.booking.room.domain.RoomType;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public class TestEntities {
+public final class RoomTestEntities {
 
     public static final Room ROOM_1 = Room.builder()
             .id(UUID.randomUUID())
