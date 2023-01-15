@@ -34,6 +34,7 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/v1/signin").permitAll()
+                .antMatchers("/v1/signup").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .addFilterBefore(new JwtFilter(jwtService), UsernamePasswordAuthenticationFilter.class);

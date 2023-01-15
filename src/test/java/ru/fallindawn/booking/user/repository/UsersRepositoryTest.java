@@ -37,15 +37,28 @@ class UsersRepositoryTest extends AbstractIntegrationTest {
     @DisplayName("findByLogin two_users_in_DB_user not_found")
     void findByLogin_twoUsersInDB_userNotFound() {
         usersRepository.saveAll(List.of(USER_1, USER_2));
-        var result = assertThrows(UsernameNotFoundException.class, () -> usersRepository.findByLogin("user3"));
+        var result = assertThrows(
+                UsernameNotFoundException.class,
+                () -> usersRepository.findByLogin("user3")
+        );
         assertEquals("Login user3 is not found", result.getMessage());
     }
 
     @Test
-    @DisplayName("existsByLogin one_user_in_DB true")
-    void existsByLogin_oneUserInDB_true() {
+    @DisplayName("existsByLogin two_users_in_DB true")
+    void existsByLogin_twoUserInDB_true() {
         usersRepository.saveAll(List.of(USER_1, USER_2));
         var result = usersRepository.existsByLogin("user1");
         assertTrue(result);
     }
+
+     @Test
+    @DisplayName("existsByLogin one_user_in_DB false")
+    void existsByLogin_oneUserInDB_true() {
+        usersRepository.saveAll(List.of(USER_1));
+        var result = usersRepository.existsByLogin("user2");
+        assertFalse(result);
+    }
+
+
 }
