@@ -12,6 +12,10 @@ import java.util.UUID;
 @Repository
 public interface RegistrationRepository extends JpaRepository<Registration, UUID> {
 
-    @Query(value = "SELECT DISTINCT * FROM registration WHERE (check_in >= ?1 and check_out <= ?2)", nativeQuery = true)
+    @Query(value = """
+            SELECT DISTINCT *
+              FROM registration
+             WHERE (check_in < ?2 AND check_out > ?1)
+             """, nativeQuery = true)
     Set<Registration> findDistinctBetween(Instant dateFrom, Instant dateTo);
 }

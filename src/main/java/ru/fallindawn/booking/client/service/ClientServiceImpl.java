@@ -2,7 +2,6 @@ package ru.fallindawn.booking.client.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.fallindawn.booking.client.domain.Client;
 import ru.fallindawn.booking.client.dto.ClientDto;
 import ru.fallindawn.booking.client.mapper.ClientMapper;
 import ru.fallindawn.booking.client.repository.ClientRepository;
@@ -21,7 +20,8 @@ public class ClientServiceImpl implements ClientService {
     @Override
     @Transactional
     public ClientDto registerClient(ClientDto clientDto) {
-        Client client = clientRepository.save(clientMapper.toEntity(clientDto));
-        return clientMapper.toDto(client);
+        var client = clientMapper.toEntity(clientDto);
+        var savedClient = clientRepository.save(client);
+        return clientMapper.toDto(savedClient);
     }
 }

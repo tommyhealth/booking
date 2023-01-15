@@ -10,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface RoomRepository extends JpaRepository<Room, UUID> {
 
-    List<Room> findAllByCapacity(Long capacity);
+    List<Room> findByCapacity(Long capacity);
 }

@@ -13,5 +13,7 @@ public interface RegistrationMapper {
 
     @Mapping(target = "clientId", source = "client.id")
     @Mapping(target = "roomId", source = "room.id")
-    RegistrationDto toDto(Registration registrationDto);
+    @Mapping(target = "dateFrom", source = "checkIn")
+    @Mapping(target = "dateTo", source = "checkOut")
+    RegistrationDto toDto(Registration registration);
 }

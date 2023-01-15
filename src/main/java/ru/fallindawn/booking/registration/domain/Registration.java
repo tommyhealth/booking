@@ -1,6 +1,5 @@
 package ru.fallindawn.booking.registration.domain;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,17 +31,17 @@ public class Registration {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "room_id")
+    @JoinColumn(name = "room_id", nullable = false)
     private Room room;
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
-    @Column
+    @Column(nullable = false)
     private Instant checkIn;
 
-    @Column
+    @Column(nullable = false)
     private Instant checkOut;
 
     public UUID getRoomId() {
