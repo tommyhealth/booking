@@ -3,9 +3,11 @@ package ru.fallindawn.booking.security;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -39,6 +41,21 @@ public class SecurityConfiguration {
                 .and()
                 .addFilterBefore(new JwtFilter(jwtService), UsernamePasswordAuthenticationFilter.class);
         return http.build();
+    }
+
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return web ->
+                web.ignoring()
+                        .antMatchers(HttpMethod.OPTIONS, "/**")
+                        .antMatchers("/v1/users:authenticate")
+                        .antMatchers("/swagger-ui.html")
+                        .antMatchers("/swagger-ui/**")
+                        .antMatchers("/test/**")
+                        .antMatchers("/v3/api-docs/**")
+                        .antMatchers("/actuator/**")
+                        .antMatchers("/webjars/**")
+                        .antMatchers("/springwolf/**");
     }
 
     @Bean
