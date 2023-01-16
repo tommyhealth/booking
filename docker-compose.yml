@@ -2,6 +2,7 @@ version: "3.9"
 services:
   postgres:
     image: postgres:13.3
+    restart: always
     environment:
       POSTGRES_DB: "booking"
       POSTGRES_USER: "postgres"
@@ -10,3 +11,20 @@ services:
       - "5432:5432"
     volumes:
       - ./src/main/resources/sql/tables_init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  booking:
+    container_name: booking
+    image: booking
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/booking
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=none
