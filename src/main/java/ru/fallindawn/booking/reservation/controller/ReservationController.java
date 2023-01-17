@@ -1,4 +1,4 @@
-package ru.fallindawn.booking.client.controller;
+package ru.fallindawn.booking.reservation.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -8,15 +8,15 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.fallindawn.booking.client.dto.ClientDto;
+import ru.fallindawn.booking.reservation.dto.ReservationDto;
 import ru.fallindawn.booking.utils.web.response.ErrorResponse;
 
 @RequestMapping("/v1")
-public interface ClientController {
+public interface ReservationController {
 
-    @PostMapping("/client")
+    @PostMapping("/reservation")
     @Operation(
-            summary = "Client registration",
+            summary = "Reserve room by client and check in check out dates",
             security = {@SecurityRequirement(name = "Bearer Authentication")},
             responses = {
                     @ApiResponse(responseCode = "200"),
@@ -31,6 +31,5 @@ public interface ClientController {
                     )
             }
     )
-    ClientDto registerClient(@RequestBody ClientDto clientDto);
-
+    ReservationDto makeReserve(@RequestBody ReservationDto makeReserveDto);
 }

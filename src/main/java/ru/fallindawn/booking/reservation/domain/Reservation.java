@@ -1,4 +1,4 @@
-package ru.fallindawn.booking.registration.domain;
+package ru.fallindawn.booking.reservation.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +24,7 @@ import java.util.UUID;
 @Entity
 @Builder
 @Table(name = "registration")
-public class Registration {
+public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

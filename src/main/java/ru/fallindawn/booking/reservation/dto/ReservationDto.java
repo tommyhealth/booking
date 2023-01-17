@@ -1,4 +1,4 @@
-package ru.fallindawn.booking.registration.dto;
+package ru.fallindawn.booking.reservation.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegistrationDto {
+public class ReservationDto {
     private UUID clientId;
     private UUID roomId;
     private Instant dateFrom;

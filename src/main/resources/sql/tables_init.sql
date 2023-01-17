@@ -14,7 +14,7 @@ CREATE TABLE room (
     type_class VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE registration (
+CREATE TABLE reservation (
     id        uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     room_id   uuid REFERENCES room(id)   NOT NULL,
     client_id uuid REFERENCES client(id) NOT NULL,
